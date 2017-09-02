@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dpi.trade.ita</groupId>
+    <artifactId>travel-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <modules>
+        <module>../utility</module>
+        <module>../model</module>
+        <module>../web</module>
+        <module>../ear</module>
+    </modules>
+
+    <packaging>pom</packaging>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <!-- ArtifactId prop -->
+        <model.artifactId>travel-model</model.artifactId>
+        <web.artifactId>travel-web</web.artifactId>
+        <ear.artifactId>travel-ear</ear.artifactId>
+        <utility.artifactId>utility</utility.artifactId>
+
+        <!-- Version prop -->
+        <model.version>1.0.0-SNAPSHOT</model.version>
+        <web.version>1.0.0-SNAPSHOT</web.version>
+        <ear.version>1.0.0-SNAPSHOT</ear.version>
+        <utility.version>1.0.0-SNAPSHOT</utility.version>
+
+        <!-- Archive name prop -->
+        <model.archive.name>model.jar</model.archive.name>
+        <web.archive.name>web.war</web.archive.name>
+        <ear.archive.name>travel-ear</ear.archive.name>
+
+        <!-- web -->
+        <web.contextRoot>/ita</web.contextRoot>
+    </properties>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.22</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>56.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>        
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>${project.groupId}:${ear.artifactId}</exclude>
+                    </excludes>
+                    <verbose>true</verbose>
+                    <generatedTestSourcesDirectory>false</generatedTestSourcesDirectory>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArguments>
+                        <endorseddirs>${project.build.directory}/endorsed</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>    
+</project>
